@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8526j6a1j714"]
+
+[ext_resource type="Script" uid="uid://cwpulupgcsvck" path="res://Demos/Third Person Shooter/Scenes/Bullet/bullet_character_body.gd" id="1_bvix4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1sro"]
+albedo_color = Color(1, 0.447059, 0.0196078, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bvix4"]
+material = SubResource("StandardMaterial3D_y1sro")
+radius = 0.178
+height = 0.352
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y1sro"]
+radius = 0.181464
+
+[node name="Bullet_CharacterBody" type="Area3D"]
+top_level = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bvix4")
+bullet_speed = 10
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bvix4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_y1sro")

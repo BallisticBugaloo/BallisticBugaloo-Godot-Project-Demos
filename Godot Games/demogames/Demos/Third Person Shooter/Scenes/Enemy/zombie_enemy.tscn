@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cw1ve6q34x8ll"]
+
+[ext_resource type="PackedScene" uid="uid://vpflc3e13qfm" path="res://Demos/Third Person Shooter/Scenes/hit_box.tscn" id="1_8usfw"]
+[ext_resource type="Script" uid="uid://b1l02wnubxm51" path="res://Demos/Third Person Shooter/Scenes/Enemy/zombie_enemy.gd" id="1_vlike"]
+[ext_resource type="PackedScene" uid="uid://c8bluhcd7lt63" path="res://Demos/Third Person Shooter/Scenes/hurt_box.tscn" id="3_oxjy5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fw21"]
+albedo_color = Color(0.294118, 0.917647, 0.160784, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8usfw"]
+material = SubResource("StandardMaterial3D_5fw21")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vlike"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vlike"]
+radius = 0.15
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlike"]
+size = Vector3(0.460449, 0.462036, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxjy5"]
+
+[node name="Zombie_Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 4
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_vlike")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_8usfw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_vlike")
+
+[node name="Arms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arms"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.63, 0, -0.3)
+mesh = SubResource("CapsuleMesh_vlike")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Arms"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.63, 0, -0.3)
+mesh = SubResource("CapsuleMesh_vlike")
+
+[node name="hit_box" parent="." instance=ExtResource("1_8usfw")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hit_box"]
+shape = SubResource("BoxShape3D_vlike")
+
+[node name="Hurt_Box" parent="." instance=ExtResource("3_oxjy5")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurt_Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_oxjy5")
+
+[connection signal="area_entered" from="Hurt_Box" to="." method="_on_hurt_box_area_entered"]

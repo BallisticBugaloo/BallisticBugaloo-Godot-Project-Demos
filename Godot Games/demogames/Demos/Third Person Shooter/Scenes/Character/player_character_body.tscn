@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://4xs2i32oc8s6"]
+
+[ext_resource type="Script" uid="uid://iw62nqonh5sd" path="res://Demos/Third Person Shooter/Scenes/Character/player_character_body.gd" id="1_80wak"]
+[ext_resource type="PackedScene" uid="uid://c8bluhcd7lt63" path="res://Demos/Third Person Shooter/Scenes/hurt_box.tscn" id="2_lsurp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s3if8"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2qb4q"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80wak"]
+albedo_color = Color(0.19136, 0.37988, 0.83558, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqdv0"]
+material = SubResource("StandardMaterial3D_80wak")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhck1"]
+size = Vector3(0.57, 0.19, 0.235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_36nkc"]
+size = Vector3(0.161, 0.38, 0.15)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lsurp"]
+
+[node name="Player_CharacterBody" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_80wak")
+
+[node name="CollisionBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_s3if8")
+
+[node name="skin" type="Node3D" parent="."]
+
+[node name="Head" type="MeshInstance3D" parent="skin"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.60714, 1.51644, 0)
+mesh = SubResource("CylinderMesh_2qb4q")
+skeleton = NodePath("../..")
+
+[node name="Body" type="MeshInstance3D" parent="skin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_dqdv0")
+skeleton = NodePath("../..")
+
+[node name="Gun" type="Node3D" parent="skin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.652355, 1.19689, 0.431216)
+
+[node name="Barrel" type="MeshInstance3D" parent="skin/Gun"]
+mesh = SubResource("BoxMesh_yhck1")
+skeleton = NodePath("../../..")
+
+[node name="magazine" type="MeshInstance3D" parent="skin/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132795, -0.291777, 0)
+mesh = SubResource("BoxMesh_36nkc")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53688, 1.19357, 0.407393)
+
+[node name="Burst_Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Reload_Timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="Hurt_Box" parent="." instance=ExtResource("2_lsurp")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurt_Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_lsurp")
+
+[connection signal="area_entered" from="Hurt_Box" to="." method="_on_hurt_box_area_entered"]

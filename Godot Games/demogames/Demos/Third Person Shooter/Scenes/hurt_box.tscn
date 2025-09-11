@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c8bluhcd7lt63"]
+
+[node name="Hurt_Box" type="Area3D"]

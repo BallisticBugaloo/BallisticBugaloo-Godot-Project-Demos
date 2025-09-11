@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://4pgmbdjdppaj"]
+
+[ext_resource type="PackedScene" uid="uid://4xs2i32oc8s6" path="res://Demos/Third Person Shooter/Scenes/Character/player_character_body.tscn" id="1_4i3bc"]
+[ext_resource type="Script" uid="uid://csqq6bwcphrha" path="res://Demos/Third Person Shooter/Scenes/Character/third_person_view.gd" id="1_fuhlo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxifg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fuhlo"]
+
+[node name="ThirdPerson_View" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_fuhlo")
+
+[node name="Player_CharacterBody" parent="." instance=ExtResource("1_4i3bc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="skin" parent="Player_CharacterBody" index="1"]
+transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 0, 0, 0)
+
+[node name="Marker3D" parent="Player_CharacterBody" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521387, 1.19357, -0.956944)
+
+[node name="CameraTarget" type="Node3D" parent="Player_CharacterBody"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="cameraPivot" type="Node3D" parent="Player_CharacterBody"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203455, 1.76835, 7.10543e-15)
+top_level = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player_CharacterBody/cameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.961305, 0.275486, 0, -0.275486, 0.961305, 0, 0, 0)
+shape = SubResource("SphereShape3D_fxifg")
+spring_length = 9.0
+
+[node name="Camera3D" type="Camera3D" parent="Player_CharacterBody/cameraPivot/SpringArm3D" groups=["Player_Camera"]]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="MeshInstance3D" parent="Player_CharacterBody/cameraPivot/SpringArm3D"]
+mesh = SubResource("SphereMesh_fuhlo")
+
+[editable path="Player_CharacterBody"]

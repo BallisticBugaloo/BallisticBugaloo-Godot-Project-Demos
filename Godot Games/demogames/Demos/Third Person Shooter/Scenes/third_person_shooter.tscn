@@ -1,0 +1,115 @@
+[gd_scene load_steps=18 format=3 uid="uid://bhx5vbb1bkab1"]
+
+[ext_resource type="PackedScene" uid="uid://4pgmbdjdppaj" path="res://Demos/Third Person Shooter/Scenes/Character/third_person_view.tscn" id="1_hi3bp"]
+[ext_resource type="Script" uid="uid://dsyusx2m6hm15" path="res://Demos/Third Person Shooter/Scenes/third_person_shooter.gd" id="1_v0h7m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hi3bp"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_mx7y3"]
+sky_material = SubResource("ProceduralSkyMaterial_hi3bp")
+
+[sub_resource type="Environment" id="Environment_v0h7m"]
+background_mode = 2
+sky = SubResource("Sky_mx7y3")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mx7y3"]
+albedo_color = Color(0.254971, 0.167957, 0.0299679, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hi3bp"]
+material = SubResource("StandardMaterial3D_mx7y3")
+size = Vector3(200, 0.5, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mx7y3"]
+size = Vector3(200, 0.52, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi3bp"]
+albedo_color = Color(0.662745, 0.352941, 0.647059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mx7y3"]
+material = SubResource("StandardMaterial3D_hi3bp")
+size = Vector3(1, 5.29, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0h7m"]
+size = Vector3(1, 5.17188, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhoav"]
+albedo_color = Color(0.0857389, 0, 0.889415, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oegh0"]
+material = SubResource("StandardMaterial3D_mhoav")
+size = Vector3(1, 4.82, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhoav"]
+size = Vector3(1, 4.88892, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0h7m"]
+albedo_color = Color(0.0256201, 0.439042, 0.0207685, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mhoav"]
+material = SubResource("StandardMaterial3D_v0h7m")
+top_radius = 3.0
+bottom_radius = 3.0
+height = 7.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hi3bp"]
+height = 6.47363
+radius = 3.05322
+
+[node name="Third_Person_shooter" type="Node3D"]
+script = ExtResource("1_v0h7m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v0h7m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, -4.61547)
+light_energy = 3.775
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_hi3bp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_mx7y3")
+
+[node name="Pillar" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.255, 2.66013, 29.664)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar"]
+mesh = SubResource("BoxMesh_mx7y3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar"]
+shape = SubResource("BoxShape3D_v0h7m")
+
+[node name="Pillar2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.736, 3, -35.289)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar2"]
+mesh = SubResource("BoxMesh_oegh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar2"]
+shape = SubResource("BoxShape3D_mhoav")
+
+[node name="RoundThing" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.0949, 2.98776, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoundThing"]
+mesh = SubResource("CylinderMesh_mhoav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoundThing"]
+shape = SubResource("CylinderShape3D_hi3bp")
+
+[node name="ThirdPerson_View" parent="." instance=ExtResource("1_hi3bp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 5.28427, 0)
+
+[node name="cameraPivot" parent="ThirdPerson_View/Player_CharacterBody" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203455, 6.65793, 7.10543e-15)
+
+[editable path="ThirdPerson_View"]
+[editable path="ThirdPerson_View/Player_CharacterBody"]
