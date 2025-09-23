@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2e3h5oharyhb"]
+
+[ext_resource type="Script" uid="uid://br14606kcq15t" path="res://Demos/Space_shooter/Scenes/Bullet/bullet.gd" id="1_wbfne"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qa21"]
+radius = 0.265372
+height = 2.02808
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qa21"]
+albedo_color = Color(0.00878527, 0.0082365, 0.0658897, 1)
+emission_enabled = true
+emission = Color(0.647059, 0.121569, 0.0862745, 1)
+emission_energy_multiplier = 1.15
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4qa21"]
+material = SubResource("StandardMaterial3D_4qa21")
+radius = 0.24
+radial_segments = 32
+rings = 4
+
+[node name="Bullet" type="Area3D"]
+top_level = true
+script = ExtResource("1_wbfne")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4qa21")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_4qa21")

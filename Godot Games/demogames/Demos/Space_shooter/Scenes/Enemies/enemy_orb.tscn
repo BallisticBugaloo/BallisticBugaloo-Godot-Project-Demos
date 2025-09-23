@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cejqwumskamq3"]
+
+[ext_resource type="Script" uid="uid://cl3p6a7s12u4g" path="res://Demos/Space_shooter/Scenes/Enemies/enemy_orb.gd" id="1_uolc5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_73jl7"]
+height = 0.166992
+radius = 2.34619
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73jl7"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.470071, 0.123272, 0.0481698, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_73jl7"]
+material = SubResource("StandardMaterial3D_73jl7")
+radius = 5.0
+height = 0.445
+radial_segments = 32
+rings = 16
+
+[node name="Enemy_orb" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_uolc5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0, 0)
+shape = SubResource("CylinderShape3D_73jl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.466846, 0, 0, 0, 0.466846, 0, 0, 0, 0.466846, 0, 0, 0)
+mesh = SubResource("SphereMesh_73jl7")

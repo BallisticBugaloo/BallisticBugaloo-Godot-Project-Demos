@@ -18,7 +18,7 @@ top_level = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_bvix4")
-bullet_speed = 10
+bullet_speed = 700
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_bvix4")

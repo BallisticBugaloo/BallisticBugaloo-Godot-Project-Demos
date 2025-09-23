@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 
 func char_move():
 	var input_dir := Input.get_vector("left","right","forward","backward")
-	#var direction := (transform.basis * Vector3(input_dir.x,0,input_dir.y).normalized())
+	var direction := (transform.basis * Vector3(input_dir.x,0,input_dir.y).normalized())
 	#if direction:
 		#velocity.x = direction.x * character_speed
 		#velocity.z = direction.z * character_speed
@@ -25,7 +25,6 @@ func char_move():
 		#velocity.x = move_toward(velocity.x,0,character_speed - 3)
 		#velocity.z = move_toward(velocity.z,0,character_speed - 3)
 		
-	var direction := (transform.basis * Vector3(input_dir.x,0,input_dir.y).normalized())
 	var forward := _camera.global_basis.z
 	var right := _camera.global_basis.x
 
@@ -40,7 +39,7 @@ func bullet_shoot_instance() -> void:
 	var bullet = preload("res://Demos/Third Person Shooter/Scenes/Bullet/bullet_character_body.tscn")
 	var bullet_instance = bullet.instantiate()
 	%Marker3D.add_child(bullet_instance)
-	bullet_instance.transform = $Marker3D.global_transform
+	bullet_instance.transform = %Marker3D.global_transform
 	
 	$Burst_Timer.start()
 
@@ -50,7 +49,7 @@ func shoot_bullet() -> void:
 			bullet_shoot_instance()
 			gun_ammo -= 1
 		if $Reload_Timer.is_stopped():
-			start_reload()
+			start_reload() 
 
 func start_reload() -> void:
 	if gun_ammo < 1:

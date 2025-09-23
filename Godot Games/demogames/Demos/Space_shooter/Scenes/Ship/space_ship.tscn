@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dio2qg504o01r"]
+
+[ext_resource type="Script" uid="uid://da8rn76cspxkn" path="res://Demos/Space_shooter/Scenes/Ship/space_ship.gd" id="1_23w10"]
+[ext_resource type="PackedScene" uid="uid://g0emla2s2m8u" path="res://Demos/Space_shooter/Assets/triangleLikeThing.gltf" id="2_r1xm7"]
+[ext_resource type="PackedScene" uid="uid://c8bluhcd7lt63" path="res://Demos/Third Person Shooter/Scenes/hurt_box.tscn" id="3_r1xm7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mjbpw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cr1fi"]
+size = Vector3(2.05273, 0.502319, 2.78467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8erpv"]
+size = Vector3(1.67407, 1, 2.7)
+
+[node name="Space_ship" type="RigidBody3D" groups=["ship"]]
+collision_layer = 0
+collision_mask = 0
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_mjbpw")
+gravity_scale = 0.0
+script = ExtResource("1_23w10")
+
+[node name="blockbench_export" parent="." instance=ExtResource("2_r1xm7")]
+transform = Transform3D(4.03866, 0, 0, 0, -2.31239e-07, 1, 0, -5.29013, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0140991, -1.4132)
+shape = SubResource("BoxShape3D_cr1fi")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Bullet_Shoot_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Hurt_Box" parent="." instance=ExtResource("3_r1xm7")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurt_Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.35)
+shape = SubResource("BoxShape3D_8erpv")
+
+[connection signal="area_entered" from="Hurt_Box" to="." method="_on_hurt_box_area_entered"]
+
+[editable path="blockbench_export"]
