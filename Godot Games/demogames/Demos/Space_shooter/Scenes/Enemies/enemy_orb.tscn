@@ -20,13 +20,16 @@ rings = 16
 
 [node name="Enemy_orb" type="Area3D"]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_uolc5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0, 0)
+visible = false
 shape = SubResource("CylinderShape3D_73jl7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.466846, 0, 0, 0, 0.466846, 0, 0, 0, 0.466846, 0, 0, 0)
 mesh = SubResource("SphereMesh_73jl7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -20,6 +20,8 @@ rings = 4
 
 [node name="Bullet" type="Area3D"]
 top_level = true
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_wbfne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

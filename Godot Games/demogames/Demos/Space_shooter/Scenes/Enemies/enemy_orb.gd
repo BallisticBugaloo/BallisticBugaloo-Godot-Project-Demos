@@ -11,3 +11,7 @@ func _physics_process(delta: float) -> void:
 	look_at(player_ship.global_transform.origin,Vector3.UP)
 	
 	position = player_ship.global_position - global_position
+
+
+func _on_area_entered(area: Area3D) -> void:
+	queue_free()

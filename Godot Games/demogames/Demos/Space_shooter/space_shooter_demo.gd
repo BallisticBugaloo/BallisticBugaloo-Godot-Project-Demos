@@ -8,7 +8,7 @@ var Seconds:int = 0
 
 func _ready() -> void:
 	#$Enemies/Timer.start()
-	print(get_viewport())
+	pass
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,6 +27,7 @@ func _on_timer_timeout() -> void:
 func enemy_spawn():
 	var enemy_orb = preload("res://Demos/Space_shooter/Scenes/Enemies/enemy_orb.tscn")
 	var enemy_orb_instance := enemy_orb.instantiate()
-	$Enemies.add_child(enemy_orb_instance)
-	enemy_orb_instance.transform = %Enemy_Spawn_POS.global_transform
+	var enemy_pos = $top_down_view/Space_ship.position * 2
+	add_child(enemy_orb_instance)
+	enemy_orb_instance.position = enemy_pos
 	$Enemies/Timer.start()
