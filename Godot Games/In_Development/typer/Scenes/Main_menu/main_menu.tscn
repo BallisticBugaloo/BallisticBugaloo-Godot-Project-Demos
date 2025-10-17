@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://bal8u6oyonbpx"]
+
+[ext_resource type="Script" uid="uid://bt3hiy47n6wpa" path="res://Scenes/Main_menu/main_menu.gd" id="1_5rold"]
+[ext_resource type="Texture2D" uid="uid://b2yy4nrayh88m" path="res://Assets/1. Free Hologram Interface Wenrexa/Card X2/Card X2.png" id="2_dmxks"]
+[ext_resource type="FontFile" uid="uid://cgxhy6if8l2iu" path="res://Fonts/upheavtt.ttf" id="3_8gjvw"]
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rold")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dmxks")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="MenuContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -189.0
+offset_right = 203.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer"]
+layout_mode = 2
+texture = ExtResource("2_dmxks")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="MenuContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0.501961, 0, 1)
+theme_override_fonts/font = ExtResource("3_8gjvw")
+theme_override_font_sizes/font_size = 30
+text = "Start
+"
+flat = true
+
+[connection signal="pressed" from="MenuContainer/ButtonContainer/Start" to="." method="_on_start_pressed"]

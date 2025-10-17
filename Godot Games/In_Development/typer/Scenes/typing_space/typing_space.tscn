@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bup3hpixw36h5"]
+
+[ext_resource type="Texture2D" uid="uid://cqayvgrki4x3d" path="res://Assets/1. Free Hologram Interface Wenrexa/Card X3/Card X5.png" id="1_mlhle"]
+[ext_resource type="FontFile" uid="uid://f0h5svlkjk0f" path="res://Fonts/PressStart2P.ttf" id="1_ugr6k"]
+
+[node name="typing_space" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mlhle")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 48.0
+offset_right = 1119.0
+offset_bottom = 520.0
+color = Color(0.0470588, 0.0470588, 0.0470588, 0.623529)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 67.0
+offset_right = -27.0
+offset_bottom = 575.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.227451, 0.933333, 0.505882, 1)
+theme_override_fonts/normal_font = ExtResource("1_ugr6k")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "A lot of times it is beneficial to write down in detail what you are trying to do in plain words before even trying to write code. This process is called pseudocoding, and it can take whatever form you want it to. It can also be helpful to solve a problem really slowly on paper first, thinking about or even writing down the individual steps you are taking to solve that problem."
+scroll_active = false
+tab_size = 5
+horizontal_alignment = 1

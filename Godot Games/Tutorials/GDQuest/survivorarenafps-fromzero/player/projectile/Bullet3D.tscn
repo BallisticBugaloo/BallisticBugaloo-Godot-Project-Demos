@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://t71v2f3yowyu"]
+
+[ext_resource type="Script" uid="uid://8vhkaw02mi64" path="res://player/projectile/bullet_3d.gd" id="1_76ynq"]
+[ext_resource type="PackedScene" uid="uid://b42vna6j3exax" path="res://player/projectile/Projectile.tscn" id="1_h7b26"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_76ynq"]
+
+[node name="Bullet3D" type="Area3D"]
+top_level = true
+script = ExtResource("1_76ynq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15093, 0, 0, 0, 0.15093, 0, 0, 0, 0.15093, 0, 0, 0)
+shape = SubResource("SphereShape3D_76ynq")
+
+[node name="Projectile" parent="." instance=ExtResource("1_h7b26")]
+transform = Transform3D(0.253867, 0, 0, 0, 0.253867, 0, 0, 0, 0.253867, 0, 0, 0)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://djbvj0hf36ohc"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_qi1k7"]
+[ext_resource type="Texture2D" uid="uid://c4fnujjnpnb5a" path="res://icon.svg" id="2_llq4w"]
+[ext_resource type="Script" path="res://Text.gd" id="3_3vgld"]
+[ext_resource type="FontFile" uid="uid://c6ps562iq608f" path="res://Fonts/Retro Gaming.ttf" id="4_bl2bg"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_qi1k7")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(62.42, 0)
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 1160.0
+offset_bottom = 633.0
+color = Color(0, 0.331607, 0.586919, 1)
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(476, 112)
+scale = Vector2(1.1875, 0.875)
+texture = ExtResource("2_llq4w")
+script = ExtResource("3_3vgld")
+
+[node name="EnemyText" type="RichTextLabel" parent="Enemy"]
+offset_left = -62.61
+offset_top = 92.96
+offset_right = 63.665
+offset_bottom = 132.455
+tooltip_text = "[center]type this[/center]"
+theme_override_colors/default_color = Color(0.990245, 0.984843, 0.990499, 1)
+theme_override_fonts/normal_font = ExtResource("4_bl2bg")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "type this"
+scroll_active = false

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://l0hmwkehqe5q"]
+
+[ext_resource type="Script" uid="uid://b3e0a4gdq2yts" path="res://cricle.gd" id="1_3u0fx"]
+
+[node name="Test_Loading" type="Node2D"]
+
+[node name="Cricle" type="Node2D" parent="."]
+script = ExtResource("1_3u0fx")

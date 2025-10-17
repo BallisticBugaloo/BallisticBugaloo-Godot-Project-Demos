@@ -1,0 +1,9 @@
+res://Levels/world.tscn
+res://Utility/enemy_spawn.gd
+res://Player/character_2d.tscn
+res://Enemies/enemy_kolbold_weak.tscn
+res://Utility/hit_box.tscn
+res://Utility/hurt_box.tscn
+res://Utility/enemy_spawn.tscn
+res://Player/Attack/ice_spear.tscn
+res://Enemies/explosion.tscn

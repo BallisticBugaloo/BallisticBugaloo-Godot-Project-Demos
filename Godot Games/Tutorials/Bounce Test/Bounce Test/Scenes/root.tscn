@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb6abaxe0xqvn"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://b80kdlq7hy11c" path="res://Bounce Test/Material/Bouce.tres" id="1_1y3iu"]
+[ext_resource type="PackedScene" uid="uid://chf7gfj7cuj3y" path="res://Bounce Test/Scenes/ball.tscn" id="1_r05by"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l6do8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mjys"]
+size = Vector3(2, 0.005, 2)
+
+[node name="Root" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_l6do8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_0mjys")
+
+[node name="Ball" parent="." instance=ExtResource("1_r05by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07181, 0)
+
+[node name="RigidBody3D" parent="Ball" index="0"]
+physics_material_override = ExtResource("1_1y3iu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.964737, 0.263216, 0, -0.263216, 0.964737, 0, 1.61274, 4.4831)
+fov = 40.0
+
+[editable path="Ball"]

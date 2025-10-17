@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bosccvuevrkkp"]
+
+[ext_resource type="Script" path="res://Scripts/ball_bounce.gd" id="1_1h5ov"]
+[ext_resource type="Texture2D" uid="uid://kj1i6rbxhxq2" path="res://sprits/Ball_Green_Shiny-32x32.png" id="1_rr7p3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu4ro"]
+radius = 10.58
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_me2tu"]
+radius = 12.0
+
+[node name="Ball_bounce" type="CharacterBody2D"]
+z_index = 5
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_1h5ov")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_rr7p3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lu4ro")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_me2tu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://csh3vspivk5m6"]
+
+[ext_resource type="Texture2D" uid="uid://cqayvgrki4x3d" path="res://Assets/1. Free Hologram Interface Wenrexa/Card X3/Card X5.png" id="1_p6s8j"]
+[ext_resource type="Script" uid="uid://dujo4thgvbkn6" path="res://Scenes/Custome_test/create_custome_test.gd" id="1_wdexv"]
+[ext_resource type="FontFile" uid="uid://f0h5svlkjk0f" path="res://Fonts/PressStart2P.ttf" id="4_7cs4g"]
+
+[node name="Create_Custome_Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdexv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1136.0
+offset_bottom = 656.0
+texture = ExtResource("1_p6s8j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 1096.0
+offset_bottom = 616.0
+color = Color(0.0470588, 0.0470588, 0.0470588, 0.623529)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 32.0
+offset_top = 56.0
+offset_right = -56.0
+offset_bottom = 440.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7cs4g")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Type Here"
+wrap_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 552.0
+offset_right = 596.0
+offset_bottom = 583.0
+theme_override_fonts/font = ExtResource("4_7cs4g")
+text = "Save Text"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

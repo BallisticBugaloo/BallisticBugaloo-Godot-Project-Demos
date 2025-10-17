@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2mn28aukvbls"]
+
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_1ubq5"]
+[ext_resource type="PackedScene" uid="uid://cm5p7kyagqddi" path="res://Scenes/Character.tscn" id="1_smnat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pngs"]
+size = Vector2(577, 32)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_1ubq5")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+polygon = PackedVector2Array(-5, 980, -8, -8, 552, -8, 553, 988, 576, 991, 560, -16, -16, -16, -29, 983)
+
+[node name="Ball_stopper" type="Area2D" parent="."]
+position = Vector2(276.845, 1004.89)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_stopper"]
+position = Vector2(-3.345, 2.40997)
+shape = SubResource("RectangleShape2D_2pngs")
+
+[node name="Brick_spawner" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(16, -16)
+
+[node name="Marker2D2" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(48, -16)
+
+[node name="Marker2D3" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(80, -16)
+
+[node name="Marker2D4" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(112, -16)
+
+[node name="Marker2D5" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(144, -16)
+
+[node name="Marker2D6" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(176, -16)
+
+[node name="Marker2D7" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(208, -16)
+
+[node name="Marker2D8" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(240, -16)
+
+[node name="Marker2D9" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(272, -16)
+
+[node name="Marker2D10" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(304, -16)
+
+[node name="Marker2D11" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(336, -16)
+
+[node name="Marker2D12" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(368, -16)
+
+[node name="Marker2D13" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(400, -16)
+
+[node name="Marker2D14" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(432, -16)
+
+[node name="Marker2D15" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(464, -16)
+
+[node name="Marker2D16" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(496, -16)
+
+[node name="Marker2D17" type="Marker2D" parent="Brick_spawner"]
+position = Vector2(528, -16)
+
+[node name="Brick_Container" type="Node2D" parent="."]
+position = Vector2(16, 4)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_smnat")]
+z_index = 5
+position = Vector2(280, 944)
+rotation = -1.57616

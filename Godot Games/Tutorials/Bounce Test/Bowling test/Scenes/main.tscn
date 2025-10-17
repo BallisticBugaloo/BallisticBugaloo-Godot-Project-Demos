@@ -1,0 +1,196 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0ucqycq8ed3j"]
+
+[ext_resource type="PackedScene" uid="uid://idavc1qbqse2" path="res://Bowling test/Scenes/bowling_ball.tscn" id="1_1hcu4"]
+[ext_resource type="Script" path="res://Bowling test/Scripts/Ball_spawn.gd" id="1_ut813"]
+
+[sub_resource type="Environment" id="Environment_k4aji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnfqu"]
+size = Vector3(7.66, 0.001, 31.97)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1jqpp"]
+size = Vector2(7.72, 31.935)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h36xs"]
+top_radius = 0.45
+bottom_radius = 0.45
+height = 1.7
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_byis4"]
+height = 1.69254
+radius = 0.4674
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k4aji")
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.932077, 0.362259, 0, -0.362259, 0.932077, 0, 2.84342, 16.5393)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.872479, 0.488652, 0, -0.488652, 0.872479, 0, 5.15182, 12.5915)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_hnfqu")
+
+[node name="floor" type="MeshInstance3D" parent="Floor"]
+layers = 3
+mesh = SubResource("PlaneMesh_1jqpp")
+skeleton = NodePath("../..")
+
+[node name="pin_Container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48364, -8.07844)
+
+[node name="pins2" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0546291, 2.73847, -3.7255)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins2"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins2"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins3" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671474, 2.73847, -4.5422)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins3"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins3"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins4" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12715, 2.73847, -5.56762)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins4"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins4"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins5" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125553, 2.73847, -5.46743)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins5"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins5"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins6" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905873, 2.73847, -5.52563)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins6"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins6"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins7" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43428, 2.73847, -6.55677)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins7"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins7"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins8" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.429934, 2.73847, -6.55677)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins8"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins8"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins9" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507784, 2.73847, -6.55677)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins9"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins9"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins10" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54142, 2.73847, -6.55677)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins10"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins10"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="pins" type="RigidBody3D" parent="pin_Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.427353, 2.73847, -4.54536)
+collision_layer = 3
+collision_mask = 3
+mass = 0.15
+gravity_scale = 1.65
+
+[node name="pins_mesh" type="MeshInstance3D" parent="pin_Container/pins"]
+mesh = SubResource("CylinderMesh_h36xs")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pin_Container/pins"]
+shape = SubResource("CylinderShape3D_byis4")
+
+[node name="Ball_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88207, 16.9786)
+script = ExtResource("1_ut813")
+ball = ExtResource("1_1hcu4")
+
+[node name="Marker3D" type="Marker3D" parent="Ball_spawn"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.712, -1.894)

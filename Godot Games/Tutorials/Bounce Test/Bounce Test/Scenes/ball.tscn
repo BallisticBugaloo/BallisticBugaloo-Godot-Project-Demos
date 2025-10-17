@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://chf7gfj7cuj3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5468u"]
+albedo_color = Color(0.337255, 0.658824, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_00arn"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_5468u")
+radius = 0.3
+height = 0.6
+radial_segments = 24
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xlych"]
+radius = 0.305
+
+[node name="Ball" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_00arn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_xlych")

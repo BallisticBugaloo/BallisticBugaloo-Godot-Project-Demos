@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bleh8m2x76kml"]
+
+[ext_resource type="PackedScene" uid="uid://qwhtn7m8ie3i" path="res://Scenes/test_character.tscn" id="2_n6afd"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="3_me2nf"]
+[ext_resource type="PackedScene" uid="uid://c72qlg1m1pdde" path="res://Scenes/door_test.tscn" id="3_mtng7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xd88n"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ljir4"]
+sky_material = SubResource("ProceduralSkyMaterial_xd88n")
+
+[sub_resource type="Environment" id="Environment_ja6kq"]
+background_mode = 2
+sky = SubResource("Sky_ljir4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0b47"]
+albedo_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4p8t"]
+material = SubResource("StandardMaterial3D_o0b47")
+size = Vector3(20, 1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnmvx"]
+size = Vector3(20, 1, 15)
+
+[node name="World_test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ja6kq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.695, 0, 0, 0, 0.0510045, 0, 0, 0, 15.806, 0, 0, 0)
+mesh = SubResource("BoxMesh_a4p8t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_jnmvx")
+
+[node name="block" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.199, 0, 0, 0, 2.351, 0, 0, 0, 7.63, -4.22028, 1.17151, 0)
+mesh = SubResource("BoxMesh_a4p8t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block/StaticBody3D"]
+shape = SubResource("BoxShape3D_jnmvx")
+
+[node name="Test_Character" parent="." instance=ExtResource("2_n6afd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.50381, 0)
+
+[node name="CameraController" type="Node3D" parent="." groups=["cameraController"]]
+script = ExtResource("3_me2nf")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.876302, 0)
+collision_mask = 2
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.931723, 0.36317, 0, -0.36317, 0.931723, 0, 2.80639, 6)
+
+[node name="LookAt" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1205)
+
+[node name="Door_test" parent="." instance=ExtResource("3_mtng7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.50381, -15.5018)

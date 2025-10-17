@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ricc18m35m4"]
+
+[ext_resource type="PackedScene" uid="uid://b5xvep8e5646p" path="res://Projectile/projectiles.tscn" id="1_rnpyc"]
+[ext_resource type="Script" uid="uid://dlmi8mr5jww2b" path="res://Test_Demo/Scenes/Projectiles/Test_ball/test_ball.gd" id="1_vd4vj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vd4vj"]
+
+[node name="Bulled3D" type="Area3D"]
+top_level = true
+script = ExtResource("1_vd4vj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.599599, 0, 0, 0, 0.599599, 0, 0, 0, 0.599599, 0, 0, 0)
+shape = SubResource("SphereShape3D_vd4vj")
+
+[node name="projectiles" parent="." instance=ExtResource("1_rnpyc")]

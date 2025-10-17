@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmvivchh1jirl"]
+
+[ext_resource type="Script" path="res://Scripts/green_ball.gd" id="1_5aulr"]
+[ext_resource type="Texture2D" uid="uid://kj1i6rbxhxq2" path="res://sprits/Ball_Green_Shiny-32x32.png" id="1_px8v1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s06ab"]
+friction = 0.0
+bounce = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmpw6"]
+radius = 15.0
+
+[node name="Green_ball" type="RigidBody2D"]
+disable_mode = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_s06ab")
+linear_velocity = Vector2(30, -1200)
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_5aulr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fmpw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_px8v1")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3rlrqvawpmci"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_p6ub0"]
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="2_f7y7k"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_p6ub0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 653.0
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(524, 270)
+script = ExtResource("2_f7y7k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Enemy"]
+anchors_preset = -1
+anchor_left = -64.0
+anchor_right = 154.0
+anchor_bottom = 19.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]type this[/center]"
+metadata/_edit_use_anchors_ = true

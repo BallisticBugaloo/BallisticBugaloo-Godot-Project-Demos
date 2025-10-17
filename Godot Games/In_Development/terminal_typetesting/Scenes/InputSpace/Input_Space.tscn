@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://36axp04latkk"]
+
+[ext_resource type="Script" uid="uid://dfdq6kppuq0qj" path="res://Scenes/InputSpace/input_space.gd" id="1_jlw8n"]
+
+[node name="Input_Space" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlw8n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[node name="TextSpace" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/table_border = Color(0.864675, 0.864675, 0.864675, 1)
+theme_override_colors/default_color = Color(0, 0.984314, 0, 1)
+bbcode_enabled = true
+text = "This is just a test more test than test give me a test it is a test my god WHAT is This TEST whY WoUlD you LeT me Do THIS TEST I DON\"T WANT TO DO THIS TEST  oh my gah."

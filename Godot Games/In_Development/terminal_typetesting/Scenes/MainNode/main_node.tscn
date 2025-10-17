@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjpt04pe20o37"]
+
+[ext_resource type="Script" uid="uid://cdhuh1ndsmf74" path="res://Scenes/MainNode/main_node.gd" id="1_dabhs"]
+[ext_resource type="PackedScene" uid="uid://36axp04latkk" path="res://Scenes/InputSpace/Input_Space.tscn" id="1_ewkoo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dabhs"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.113869, 0.609856, 0.109436, 1)
+
+[node name="MainNode" type="Node"]
+script = ExtResource("1_dabhs")
+
+[node name="Input_Space" parent="." instance=ExtResource("1_ewkoo")]
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HelpLabels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="HelpLabels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.716296, 0.716296, 0.716296, 1)
+
+[node name="ButtomLabels" type="Node2D" parent="HelpLabels"]
+
+[node name="MenuLabel" type="Label" parent="HelpLabels/ButtomLabels"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1182.0
+offset_top = -10.0
+offset_right = 1280.0
+offset_bottom = 34.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(ESC) Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReloadLabel" type="Label" parent="HelpLabels/ButtomLabels"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -1.0
+offset_right = 98.0
+offset_bottom = 22.0
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(CTRL + R) Reload"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -168.5
+offset_right = 246.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="Boarder" type="Label" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_dabhs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -167.0
+offset_right = 98.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ExitLabel" type="Label" parent="MenuControl/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "(CTRL + E) Exit"
+horizontal_alignment = 1
+vertical_alignment = 1

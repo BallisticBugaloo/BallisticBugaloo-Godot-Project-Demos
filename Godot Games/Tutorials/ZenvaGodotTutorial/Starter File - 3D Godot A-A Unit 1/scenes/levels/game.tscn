@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://b647vfht27rma"]
+
+[ext_resource type="Material" uid="uid://cp1q7pp12phed" path="res://graphics/test texture/TestMaterial.tres" id="1_e6yxx"]
+[ext_resource type="Texture2D" uid="uid://cqn8gi2a50q32" path="res://graphics/test texture/white.svg" id="2_61jgc"]
+[ext_resource type="PackedScene" uid="uid://8orjcnfoeucj" path="res://scenes/characters/player.tscn" id="2_eqihu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eqihu"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0.0862745, 0.168627, 0.717647, 1)
+ground_horizon_color = Color(0.3591, 0.63, 0.417795, 1)
+ground_curve = 0.0546418
+
+[sub_resource type="Sky" id="Sky_61jgc"]
+sky_material = SubResource("ProceduralSkyMaterial_eqihu")
+
+[sub_resource type="Environment" id="Environment_riktp"]
+background_mode = 1
+background_color = Color(0.207843, 0.235294, 0.509804, 0.8)
+sky = SubResource("Sky_61jgc")
+ambient_light_source = 2
+ambient_light_color = Color(0.396078, 0.415686, 0.866667, 0.729412)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.95
+glow_strength = 0.2
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.246437, 0.467308, 0.3833, 1)
+fog_light_energy = 0.6
+fog_density = 0.0008
+fog_sky_affect = 0.61
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_61jgc"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 150.0
+dof_blur_far_transition = 250.0
+dof_blur_amount = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riktp"]
+albedo_color = Color(1, 0.764706, 0.372549, 1)
+albedo_texture = ExtResource("2_61jgc")
+uv1_triplanar = true
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_riktp")
+camera_attributes = SubResource("CameraAttributesPractical_61jgc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.497779, -0.699588, 0.512634, -0.0470802, 0.568399, 0.821405, 0, 11.9823, 0)
+light_color = Color(0.753983, 0.753984, 0.753983, 1)
+shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 1.2
+
+[node name="Terrain" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain"]
+size = Vector3(50.4883, 0.0915527, 44.9746)
+material = ExtResource("1_e6yxx")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278209, 0.661273, 7.09816)
+radius = 2.07373
+height = 1.23871
+sides = 12
+material = ExtResource("1_e6yxx")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7625, 0.994296, 0.657504)
+radius = 1.66846
+height = 1.90475
+sides = 12
+material = ExtResource("1_e6yxx")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97813, 1.63443, -8.80892)
+radius = 7.0
+height = 3.18503
+sides = 12
+material = ExtResource("1_e6yxx")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Terrain"]
+transform = Transform3D(0.897882, 0.425236, 0.113942, 0, 0.258819, -0.965926, -0.440237, 0.867287, 0.232389, -0.973249, 6, -9)
+inner_radius = 1.45
+outer_radius = 2.759
+sides = 12
+ring_sides = 8
+material = SubResource("StandardMaterial3D_riktp")
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="Player" parent="Characters" instance=ExtResource("2_eqihu")]

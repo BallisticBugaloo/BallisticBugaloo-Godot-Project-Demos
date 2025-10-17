@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://8fmtwnnp88qd"]
+
+[ext_resource type="Script" path="res://Scripts/deck_nhand.gd" id="1_p075e"]
+
+[node name="DeckNhand" type="Node2D"]
+script = ExtResource("1_p075e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugTool" type="Node2D" parent="CanvasLayer"]
+
+[node name="Button 1" type="Button" parent="CanvasLayer/DebugTool"]
+offset_left = 113.0
+offset_right = 217.0
+offset_bottom = 31.0
+text = "Creat Card 1
+"
+
+[node name="Button 2" type="Button" parent="CanvasLayer/DebugTool"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Create Card 2"
+
+[node name="Spawn" type="Node2D" parent="CanvasLayer/DebugTool"]
+position = Vector2(150, 253)
+
+[connection signal="pressed" from="CanvasLayer/DebugTool/Button 1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/DebugTool/Button 2" to="." method="_on_button_2_pressed"]

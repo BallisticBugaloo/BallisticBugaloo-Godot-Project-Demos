@@ -1,0 +1,4 @@
+Game with voxel style with random generated streets and buildings in shamble 
+add elemental powers that effect weapons
+elemental effects is only hand to hand combat like punching and kicking.
+using staff or bows while elemental power is active effects these weapons and adds elemental effects

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqjuray73vi14"]
+
+[ext_resource type="Script" uid="uid://duy055a4qt0pq" path="res://Test_Demo/Scenes/Characters/player.gd" id="1_6qd0o"]
+[ext_resource type="PackedScene" uid="uid://cmo20o7p7mjmc" path="res://Test_Demo/Scenes/Characters/test_first_player/character.tscn" id="2_h7tw4"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_6qd0o")
+
+[node name="Character" parent="." instance=ExtResource("2_h7tw4")]
+unique_name_in_owner = true

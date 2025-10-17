@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://6hsehw7uotn5"]
+
+[ext_resource type="PackedScene" uid="uid://cshktag2mpbks" path="res://Test_Demo/Scenes/Levels/Test_first_level/test_level.tscn" id="1_8ot3w"]
+[ext_resource type="PackedScene" uid="uid://duu7macrdncd4" path="res://Players/player_one.tscn" id="2_8ot3w"]
+[ext_resource type="PackedScene" uid="uid://b8vq1un1rt124" path="res://Enemies/enemy.tscn" id="3_u50je"]
+
+[node name="Test_top_down_game" type="Node3D"]
+
+[node name="Test_level" parent="." instance=ExtResource("1_8ot3w")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_u50je")]
+transform = Transform3D(-0.79811, 0, 0.602512, 0, 1, 0, -0.602512, 0, -0.79811, -0.800234, 0.869936, 7.95317)
+
+[node name="Player_one" parent="." instance=ExtResource("2_8ot3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.191799)

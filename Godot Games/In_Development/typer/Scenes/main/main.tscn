@@ -1,0 +1,217 @@
+[gd_scene load_steps=9 format=3 uid="uid://c64g8cq3veoil"]
+
+[ext_resource type="PackedScene" uid="uid://bup3hpixw36h5" path="res://Scenes/typing_space/typing_space.tscn" id="1_b20jg"]
+[ext_resource type="Script" uid="uid://dnpgaxa5quki" path="res://Scenes/main/main.gd" id="1_w1fgp"]
+[ext_resource type="Texture2D" uid="uid://cqayvgrki4x3d" path="res://Assets/1. Free Hologram Interface Wenrexa/Card X3/Card X5.png" id="3_wcurd"]
+[ext_resource type="Texture2D" uid="uid://booilrsxa8l8c" path="res://Assets/1. Free Hologram Interface Wenrexa/Button 1/Button Normal.png" id="4_wcurd"]
+[ext_resource type="Script" uid="uid://cdww0tpi6ctvt" path="res://Scenes/main/camera_2d.gd" id="5_brlrh"]
+[ext_resource type="AudioStream" uid="uid://bw5f2ldk5cm7c" path="res://Music/806593__edimar_ramide__hurt2.wav" id="7_b3x3g"]
+[ext_resource type="AudioStream" uid="uid://kmgylju66j5x" path="res://Music/796080__ceethewhite__levelbgm.wav" id="8_hgq70"]
+[ext_resource type="Texture2D" uid="uid://bkqql8t5huil0" path="res://Assets/1. Free Hologram Interface Wenrexa/Icons/35.png" id="9_8lqer"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_w1fgp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="stats" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 48.0
+offset_top = 16.0
+offset_bottom = 88.0
+grow_horizontal = 2
+
+[node name="TimerContainer" type="HBoxContainer" parent="stats"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_right = 247.0
+offset_bottom = 41.5
+grow_vertical = 2
+
+[node name="minutes" type="Label" parent="stats/TimerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.230766, 0.449811, 0.984719, 1)
+theme_override_font_sizes/font_size = 60
+text = "0:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="secs" type="Label" parent="stats/TimerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.230766, 0.449811, 0.984719, 1)
+theme_override_font_sizes/font_size = 60
+text = "00."
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="msecs" type="Label" parent="stats/TimerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.230766, 0.449811, 0.984719, 1)
+theme_override_font_sizes/font_size = 60
+text = "000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="statContainer" type="VBoxContainer" parent="stats"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -38.0
+offset_bottom = 38.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="Mistake_count" type="Label" parent="stats/statContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 0.027451, 0.0705882, 1)
+theme_override_font_sizes/font_size = 23
+text = "Mistakes: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Words_per_min" type="Label" parent="stats/statContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.74902, 0.854902, 1)
+theme_override_font_sizes/font_size = 23
+text = "Words Per Minute: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="typing_space" parent="." instance=ExtResource("1_b20jg")]
+offset_top = 88.0
+
+[node name="MenuContainer" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -148.0
+offset_right = 368.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wcurd")
+expand_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Reset_Bt" type="Button" parent="MenuContainer/Buttons"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0.662745, 0, 1)
+text = "Reset"
+icon = ExtResource("4_wcurd")
+flat = true
+icon_alignment = 1
+
+[node name="Custom_Bt" type="Button" parent="MenuContainer/Buttons"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0.662745, 0, 1)
+text = "Custome Mode"
+icon = ExtResource("4_wcurd")
+flat = true
+icon_alignment = 1
+
+[node name="Exit_Bt" type="Button" parent="MenuContainer/Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0.662745, 0, 1)
+text = "Exit"
+icon = ExtResource("4_wcurd")
+flat = true
+icon_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+position = Vector2(576, 320)
+script = ExtResource("5_brlrh")
+shake_fade = 20.0
+
+[node name="Sound&Effects" type="Node2D" parent="."]
+
+[node name="Penalty_effect" type="AudioStreamPlayer2D" parent="Sound&Effects"]
+unique_name_in_owner = true
+stream = ExtResource("7_b3x3g")
+volume_db = 8.0
+pitch_scale = 0.4
+area_mask = 0
+
+[node name="BackGround_music" type="AudioStreamPlayer2D" parent="Sound&Effects"]
+unique_name_in_owner = true
+stream = ExtResource("8_hgq70")
+autoplay = true
+area_mask = 0
+
+[node name="Volume_Button" type="Button" parent="Sound&Effects"]
+offset_left = 312.0
+offset_top = 24.0
+offset_right = 351.0
+offset_bottom = 72.0
+focus_mode = 0
+icon = ExtResource("9_8lqer")
+flat = true
+
+[node name="Volume_slider" type="HSlider" parent="Sound&Effects/Volume_Button"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 64.0
+rotation = 1.57079
+focus_mode = 0
+max_value = 1.5
+step = 0.001
+
+[connection signal="pressed" from="MenuContainer/Buttons/Reset_Bt" to="." method="_on_reset_bt_pressed"]
+[connection signal="pressed" from="MenuContainer/Buttons/Custom_Bt" to="." method="_on_custom_bt_pressed"]
+[connection signal="pressed" from="MenuContainer/Buttons/Exit_Bt" to="." method="_on_exit_bt_pressed"]
+[connection signal="mouse_entered" from="Sound&Effects/Volume_Button" to="." method="_on_volume_button_mouse_entered"]
+[connection signal="pressed" from="Sound&Effects/Volume_Button" to="." method="_on_volume_button_pressed"]
+[connection signal="mouse_exited" from="Sound&Effects/Volume_Button/Volume_slider" to="." method="_on_volume_slider_mouse_exited"]
+[connection signal="value_changed" from="Sound&Effects/Volume_Button/Volume_slider" to="." method="_on_volume_slider_value_changed"]
